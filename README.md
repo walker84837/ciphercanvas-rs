@@ -19,7 +19,8 @@ This is a simple WiFi QR code generator written in Rust. It generates the QR cod
 
 For generating a WiFi QR code with the program, use the following command:
 
-``` $ ./wifi-qrcode-rs-linux-x86_64 --ssid mywifiname --password iusearchbtw123 --encryption WPA
+```shell
+$ ./wifi-qrcode-rs-linux-x86_64 --ssid mywifiname --password iusearchbtw123 --encryption WPA
 ```
 
 This will generate a `qrcode.svg` image with the QR code for the WiFi network.
