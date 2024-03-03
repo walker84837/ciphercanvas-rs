@@ -48,14 +48,20 @@ fn main() -> Result<()> {
     let toml_config: Value = toml::from_str(&config_str)?;
 
     let export_format = toml_config["qrcode"]["export"].as_str().unwrap_or_else(|| {
-        eprintln!("Found invalid or missing value for output format. Falling back to {:?}...", Consts::FORMAT);
+        eprintln!(
+            "Found invalid or missing value for output format. Falling back to {:?}...",
+            Consts::FORMAT
+        );
         Consts::FORMAT
     });
 
     let size = toml_config["qrcode"]["size"]
         .as_str()
         .unwrap_or_else(|| {
-            eprintln!("Failed to get size: falling back to {0}x{0}...", Consts::SIZE);
+            eprintln!(
+                "Failed to get size: falling back to {0}x{0}...",
+                Consts::SIZE
+            );
             "512"
         })
         .parse::<u32>()?;
@@ -113,7 +119,7 @@ fn main() -> Result<()> {
         "svg" => {
             let mut writer = BufWriter::new(File::create(&arguments.output)?);
             writer.write_all(image.as_bytes())?;
-        },
+        }
 
         "png" => {
             unimplemented!()
