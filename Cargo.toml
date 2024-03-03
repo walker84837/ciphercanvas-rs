@@ -1,6 +1,6 @@
 [package]
-name = "wifi-qrcode-rs"
-version = "0.0.3"
+name = "ciphercanvas-rs"
+version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -11,7 +11,3 @@ clap = { version = "4.5.1", features = ["derive"] }
 qrcode = "0.12"
 structopt = "0.3"
 toml = "0.8"
-# tempfile = "3.8"
-# resvg = "0.36"
-# usvg = "0.36"
-# tiny-skia = "0.11"
