@@ -5,9 +5,17 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[profile.release]
+opt-level = 3
+strip = "symbols"
+
 [dependencies]
 anyhow = "1.0"
 clap = { version = "4.5.1", features = ["derive"] }
+image = "0.24.9"
 qrcode = "0.12"
+resvg = "0.40.0"
 structopt = "0.3"
+tiny-skia = "0.11.4"
 toml = "0.8"
+usvg = "0.40.0"
