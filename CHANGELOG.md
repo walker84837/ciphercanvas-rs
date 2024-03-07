@@ -7,6 +7,12 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ## \[Unreleased\]
 
+## \[0.1.1\] - 2024-03-07
+
+### Added
+
+  - Add option to export to PNG images (currently limited to more than 256x256).
+
 ## \[0.1.0\] - 2024-03-03
 
 ### Added
