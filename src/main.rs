@@ -1,11 +1,13 @@
 use anyhow::{anyhow, Context, Result};
 use clap::Parser;
 use qrcode::{render::svg, EcLevel, QrCode};
+use resvg::render;
 use std::{
     fs::File,
     io::{BufReader, BufWriter, Read, Write},
     path::PathBuf,
 };
+use tiny_skia::{Pixmap, Transform};
 use toml::Value;
 
 #[derive(Parser)]
@@ -24,7 +26,7 @@ struct Args {
     #[arg(short, long, help = "the toml configuration file.")]
     config: PathBuf,
 
-    #[arg(short, long, default_value = "qrcode.svg")]
+    #[arg(short, help = "the output file to export the qr code to.")]
     output: PathBuf,
 }
 
@@ -56,15 +58,18 @@ fn main() -> Result<()> {
     });
 
     let size = toml_config["qrcode"]["size"]
-        .as_str()
+        .as_integer()
         .unwrap_or_else(|| {
             eprintln!(
                 "Failed to get size: falling back to {0}x{0}...",
                 Consts::SIZE
             );
-            "512"
-        })
-        .parse::<u32>()?;
+            Consts::SIZE as i64
+        }) as u32;
+
+    if size < 256 {
+        eprintln!("WARNING: The image is lower than 256. The resulting QR code may look cropped.");
+    }
 
     let foreground = toml_config["colors"]["foreground"]
         .as_str()
@@ -115,6 +120,21 @@ fn main() -> Result<()> {
         .light_color(svg::Color(background))
         .build();
 
+    let load_svg = |contents: &[u8]| -> Result<Pixmap> {
+        let options = usvg::Options::default();
+        let fontdb = usvg::fontdb::Database::new();
+        let tree = usvg::Tree::from_data(contents, &options, &fontdb)?;
+
+        let mut pixmap = match Pixmap::new(size, size) {
+            Some(pxmap) => pxmap,
+            None => { Err(anyhow!("Failed to make a new Pixmap")) }?,
+        };
+
+        render(&tree, Transform::default(), &mut pixmap.as_mut());
+
+        Ok(pixmap)
+    };
+
     match export_format {
         "svg" => {
             let mut writer = BufWriter::new(File::create(&arguments.output)?);
@@ -122,7 +142,17 @@ fn main() -> Result<()> {
         }
 
         "png" => {
-            unimplemented!()
+            let pixmap = load_svg(image.as_bytes())?;
+            let file_path = format!(
+                "{}.png",
+                arguments
+                    .output
+                    .to_string_lossy()
+                    .split('.')
+                    .collect::<Vec<_>>()[0]
+            );
+            pixmap.save_png(&file_path)?;
+            println!("Saved image to '{}' successfully.", &file_path);
         }
 
         _ => {

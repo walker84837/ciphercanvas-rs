@@ -11,9 +11,11 @@ The configuration file should include sections for `qrcode` and `colors` with th
 |`background`|The background color of the QR code. (default: black)|
 
 > [!WARNING]
-> Only the SVG format is implemented as of now.
+> The current PNG implementation is known to work with resolutions higher than
+> 256x256.
 
-Here is a sample configuration template:
+Here is a sample configuration template, which exports the QR code to a 512x512
+SVG image.
 
 ```toml
 [qrcode]
