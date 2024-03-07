@@ -64,8 +64,12 @@ fn main() -> Result<()> {
                 "Failed to get size: falling back to {0}x{0}...",
                 Consts::SIZE
             );
-            512i64
+            Consts::SIZE as i64
         }) as u32;
+
+    if size < 256 {
+        eprintln!("WARNING: The image is lower than 256. The resulting QR code may look cropped.");
+    }
 
     let foreground = toml_config["colors"]["foreground"]
         .as_str()
