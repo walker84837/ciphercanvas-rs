@@ -1,11 +1,11 @@
-# ciphercanvas: wifi qr generator
+# ciphercanvas: Wi-Fi QR Code Generator
 
-A program written in Rust that generates a QR code from a WiFi network
-configuration file. It takes the SSID, encryption type (WPA or WEP), password,
-and desired output format as input, and writes the QR code to the specified
-output file.
+A robust and efficient program written in Rust that generates QR codes for Wi-Fi
+networks. It takes inputs such as SSID, encryption type (WPA or WEP), password,
+and desired output format, producing a QR code that simplifies Wi-Fi access
+sharing.
 
-## Table of contents
+## Table of Contents
 
   - [Usage](#usage)
   - [Contributing](#contributing)
@@ -13,29 +13,54 @@ output file.
 
 ## Usage
 
-For generating a WiFi QR code with the program:
+To generate a Wi-Fi QR code using CipherCanvas:
 
-1.  Make a configuration file according to [the
-    documentation](docs/configuration.md).
+1.  **Create a configuration file**: Follow the guidelines in [the
+    documentation](docs/configuration.md) to create a configuration file that
+    includes your Wi-Fi network details.
 
-2.  Run `ciphercanvas` to generate the QR code. This will generate a `qrcode.svg`
-    image with the QR code for the WiFi network.
+2.  **Generate the QR code**: Run the `ciphercanvas` command with the
+    appropriate options to generate your QR code. This example command creates a
+    `qrcode.svg` file based on your configuration:
     
     ``` console
-    $ ./ciphercanvas -s wifi4life -e WPA -c your-config-file.toml
+    $ ./ciphercanvas -s wifi4life -e wpa -c your-config-file.toml -o qrcode.svg
     ```
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute, please follow this
-procedure:
+We welcome contributions from the community! If you would like to contribute to
+ciphercanvas, please follow these steps:
 
-1.  Fork this repository.
-2.  Clone the forked repository.
-3.  Make the changes and commit them.
-4.  Push the branch to your forked repository.
+1.  **Fork the repository**: Click the "Fork" button at the top right of this
+    repository's page.
+
+2.  **Clone your fork**: Clone the forked repository to your local machine.
+    
+    ``` console
+    $ git clone https://github.com/walker84837/ciphercanvas-rs.git
+    ```
+
+3.  **Make your changes**: Create a new branch, make your changes, and commit
+    them with clear, descriptive messages.
+    
+    ``` console
+    $ git checkout -b your-feature-branch
+    $ git commit -m "Description of your changes"
+    ```
+
+4.  **Push your branch**: Push your changes to your forked repository.
+    
+    ``` console
+    $ git push origin your-feature-branch
+    ```
+
+5.  **Create a Pull Request**: Open a pull request from your forked repository
+    to the main repository. Provide a detailed description of your changes and
+    any relevant information for reviewers.
 
 ## License
 
 This project is licensed under the [GNU General Public License
-version 3.0](LICENSE.md).
+version 3.0](LICENSE.md). By contributing to this project, you agree to license
+your contributions under the same license.

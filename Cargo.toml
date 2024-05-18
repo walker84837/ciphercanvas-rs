@@ -1,20 +1,30 @@
 [package]
-name = "ciphercanvas-rs"
-version = "0.1.0"
+name = "ciphercanvas"
+version = "0.2.0"
 edition = "2021"
+license = "GPL-3.0"
+categories = ["command-line-utilities"]
+keywords = ["command-line", "cli", "qrcode"]
+readme = "README.md"
+repository = "https://github.com/walker84837/ciphercanvas-rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev]
+debug = false
 
 [profile.release]
-opt-level = 3
-strip = "symbols"
+strip = true
+lto = true
+overflow-checks = true
+panic = "abort"
 
 [dependencies]
 anyhow = "1.0"
 clap = { version = "4.5.1", features = ["derive"] }
 image = "0.24.9"
+log = "0.4.21"
 qrcode = "0.12"
 resvg = "0.40.0"
+simple_logger = "5.0.0"
 structopt = "0.3"
 tiny-skia = "0.11.4"
 toml = "0.8"
