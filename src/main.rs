@@ -66,10 +66,13 @@ impl Consts {
 }
 
 fn main() -> Result<()> {
-    simple_logger::init().unwrap();
-    info!("Logger initialized");
-
     let args = Args::parse();
+
+    if args.verbose {
+        simple_logger::init().unwrap();
+        info!("Logger initialized");
+    }
+
     info!("Parsed arguments: {:#?}", args);
 
     let config_str = read_config(&args.config)?;

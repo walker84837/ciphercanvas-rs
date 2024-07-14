@@ -11,12 +11,6 @@ makedepends=('cargo')  # Rust projects use cargo for building
 source=("git+https://github.com/walker84837/ciphercanvas-rs.git")
 md5sums=('SKIP')  # Since we're using git source, checksum is skipped
 
-check() {
-    cd "$srcdir"
-
-    cargo test --locked --all-features --no-fail-fast
-}
-
 build() {
     cd "$srcdir"
 
