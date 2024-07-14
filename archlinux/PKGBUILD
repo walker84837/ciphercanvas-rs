@@ -1,0 +1,23 @@
+# Maintainer: walker84837 <walker84837@gmail.com>
+pkgname=ciphercanvas
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Just a blazingly fast Wi-Fi QR code generator"
+arch=('x86_64')
+url="https://github.com/walker84837/ciphercanvas-rs"
+license=('GPL-3.0')
+depends=('gcc-libs')  # Rust binaries typically depend on glibc
+makedepends=('cargo')  # Rust projects use cargo for building
+source=("git+https://github.com/walker84837/ciphercanvas-rs.git")
+md5sums=('SKIP')  # Since we're using git source, checksum is skipped
+
+build() {
+    cd "$srcdir"
+
+    cargo build --release --locked --all-features --target-dir=target
+}
+
+package() {
+    cd "$srcdir"
+    install -Dm755 "target/release/ciphercanvas" "$pkgdir/usr/bin/ccanvas"
+}

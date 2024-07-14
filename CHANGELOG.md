@@ -7,18 +7,31 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2024-07-14
+
+### Added
+
+- Add logging throughout codebase for better visibility into process flow.
+- Introduce new module imports `get_config` and `image_ops`.
+
+### Changed
+
+- Update CLI command from `ciphercanvas` to `ccanvas` in README.md.
+- New QR code encryption types, including `None` (no password).
+- Update README to match PKGBUILD.
+
 ## [0.2.0] - 2024-05-18
 
 ### Added
 
 In source code (src/main.rs):
-- Implement logging with simple_logger
+- Implement logging with `simple_logger`
 - Introduce the Encryption enum for encryption types and fmt::Display
-- Add logging initialization with simple_logger
+- Add logging initialization with `simple_logger`
 
 In Cargo.toml:
 - Add license (GPL-3.0), categories, keywords, readme, and repo URL.
-- Add new dependencies: log and simple_logger.
+- Add new dependencies: log and `simple_logger`.
 
 ### Changed
 
