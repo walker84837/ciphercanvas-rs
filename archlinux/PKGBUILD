@@ -1,6 +1,6 @@
 # Maintainer: walker84837 <walker84837@gmail.com>
 pkgname=ciphercanvas
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Just a blazingly fast Wi-Fi QR code generator"
 arch=('x86_64')
