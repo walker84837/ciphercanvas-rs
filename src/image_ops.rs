@@ -32,6 +32,28 @@ fn load_svg(contents: &[u8], size: u32) -> Result<Pixmap> {
     Ok(pixmap)
 }
 
+/// Save an image to a file
+/// Fails when the format is not supported, or when saving fails
+/// # Examples:
+/// Save an SVG image
+/// ```rust
+/// use ciphercanvas::save_image;
+/// let image = "<svg>...</svg>";
+/// let format = "svg";
+/// let size = 128;
+/// let output = PathBuf::from("output.svg");
+/// save_image(&output, &format, &image, size).unwrap();
+/// ```
+///
+/// Save a PNG image
+/// ```rust
+/// use ciphercanvas::save_image;
+/// let image = "<svg>...</svg>";
+/// let format = "png";
+/// let size = 128;
+/// let output = PathBuf::from("output.png");
+/// save_image(&output, &format, &image, size).unwrap();
+/// ```
 pub fn save_image(output: &PathBuf, format: &str, image: &str, size: u32) -> Result<()> {
     const SUPPORTED_FORMATS: &[&str] = &["svg", "png"];
     info!(
