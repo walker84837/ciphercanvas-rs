@@ -12,8 +12,10 @@ use std::{
 mod get_config;
 mod image_ops;
 
-use get_config::*;
-use image_ops::*;
+use crate::{
+    get_config::{get_config_int, get_config_str},
+    image_ops::save_image,
+};
 
 #[derive(Debug, Parser)]
 struct Args {
