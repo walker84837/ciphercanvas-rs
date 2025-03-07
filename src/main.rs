@@ -1,7 +1,7 @@
 use anyhow::{Context, Result};
 use clap::{Parser, ValueEnum};
 use log::{info, warn};
-use qrcode::{render::svg, EcLevel, QrCode};
+use qrcode::{EcLevel, QrCode, render::svg};
 use std::{
     fmt,
     fs::File,

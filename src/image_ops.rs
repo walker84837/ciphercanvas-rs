@@ -1,4 +1,4 @@
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use log::{error, info};
 use resvg::render;
 use std::{
@@ -7,7 +7,7 @@ use std::{
     path::PathBuf,
 };
 use tiny_skia::{Pixmap, Transform};
-use usvg::{fontdb, Options, Tree};
+use usvg::{Options, Tree, fontdb};
 
 fn load_svg(contents: &[u8], size: u32) -> Result<Pixmap> {
     info!("Loading SVG content with size {}x{}", size, size);
