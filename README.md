@@ -30,34 +30,15 @@ To generate a Wi-Fi QR code using CipherCanvas:
 ## Contributing
 
 We welcome contributions from the community! If you would like to contribute to
-CipherCanvas, please follow these steps:
+CipherCanvas, here is a few things you can do:
 
-1.  Fork the repository by clicking [this
-    link](https://github.com/walker84837/ciphercanvas-rs/fork).
+### Roadmap
 
-2.  Clone the forked repository to your local machine.
-    
-    ``` console
-    $ git clone https://github.com/walker84837/ciphercanvas-rs.git
-    ```
-
-3.  **Make your changes**: Create a new branch, make your changes, and commit
-    them. I recommend following [Conventional
-    Commits](https://www.conventionalcommits.org/) and <https://commit.style/>.
-    
-    ``` console
-    $ git checkout -b your-feature-branch
-    $ git commit -m "Description of your changes"
-    ```
-
-4.  **Push your branch**: Push your changes to your forked repository.
-    
-    ``` console
-    $ git push origin your-feature-branch
-    ```
-
-5.  **Create a PR**: Open a pull request from your forked repository
-    to the main repository. Provide any relevant information for reviewers.
+- [ ] Support exporting images in other formats
+- [ ] Switch to a crate which provides fancier logging (like `env_logger`)
+- [ ] Create config file if not found ([directories](https://docs.rs/directories/6.0.0/directories/struct.ProjectDirs.html))
+- [ ] Resolve issue where an image that is smaller than 256x256 is smaller
+  - Consider using a bigger image and [rescaling](https://docs.rs/image/latest/image/imageops/fn.resize.html) it.
 
 ## License
 
